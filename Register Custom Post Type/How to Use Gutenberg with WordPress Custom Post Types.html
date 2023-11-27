@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+
+
+
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">How to Use Gutenberg with WordPress Custom Post Types</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Over the years, the WordPress community has been using WordPress Custom Post Types (CPT) to extend the functionality of the default WordPress platform. Given its popularity, the feature is an integral part of WordPress 5.x.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>But before delving into the steps, let’s learn the basics of WordPress custom post types and how it helps you.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="what-is-cpt">What Is Custom Post Type in WordPress?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Custom post types let you customize your WordPress CMS to create more content types to help you categorize your post types. By default, WordPress offers a few post types, including:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>Posts</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Media</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Pages</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Comments</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>But, with custom post types, you can cross these limitations and create your own post types to make the most of your WordPress CMS.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Before creating custom post types, you must analyze if you need to create extra post types or not. WordPress offers the basic post types by default, sufficient for most sites, but users seeking customizability can easily add more post types. And this blog covers the easy ways of adding them to your WordPress site.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="gutenberg-editor">The Latest Super Tool in WordPress: Gutenberg Editor</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Gutenberg is only visible for the default pages and post types. Since WordPress custom post types are almost everywhere, the Gutenberg editor’s unavailability has been a topic of discussion in the community since WordPress 5.0.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If you have the latest <a href="https://www.cloudways.com/blog/wordpress-6-0/" target="_blank" rel="noreferrer noopener">WordPress version 6.0</a> installed on your server, you’ll see the latest Gutenberg version that gives you the <a href="https://www.cloudways.com/blog/wordpress-full-site-editing/" target="_blank" rel="noreferrer noopener">full site editing</a> feature. Gutenberg is the default block editor in WordPress and has replaced the classic WordPress editor.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Users who add custom post types on their WordPress sites using an old WordPress version (4.9 or below) will see the old Classic Editor when they create or edit a CPT.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>I’ll demonstrate how to register or add Gutenberg custom post type on your WordPress website using a code snippet. Then I’ll show how you can enable Gutenberg on a site using an old WordPress version and how to add the post types in your enabled Gutenberg editor.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="register-gutenberg">Register Gutenberg WordPress Custom Post Type</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Let’s learn the easy steps to register Gutenberg for WordPress custom post type.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>Access your site’s backend files via any FTP client.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Go to <strong>public_html &gt; wp-content &gt; themes</strong>.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>You’ll see all the themes installed on your WordPress site in the theme folder.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>Click the <strong>activated theme</strong> folder, and find the <strong>functions.php</strong> file.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Open the <strong>function.php</strong> file on a text editor and add the following code at the bottom of the file.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>    function cw_post_type() {
+       register_post_type( 'portfolio',
+           // WordPress CPT Options Start
+           array(
+               'labels' =&gt; array(
+                   'name' =&gt; __( 'Portfolio' ),
+                   'singular_name' =&gt; __( 'Portfolio' )
+               ),
+               'has_archive' =&gt; true,
+               'public' =&gt; true,
+               'rewrite' =&gt; array('slug' =&gt; 'portfolio'),
+               'excerpt', 'comments' )
+           )
+       );
+    }
+    add_action( 'init', 'cw_post_type' );</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>Here is the pictorial representation of where you have to add the code.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>Save the changes on the <strong>function.php</strong> file and reupload it to your website.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Now go to your WordPress website and see the newly added <strong>Portfolio</strong> CPT on the left-side menu bar.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>When you try to create or edit a custom post type, you’ll see the default block editor (Gutenberg) on your WordPress website.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p><strong>Note:</strong> <em>If you are using an old WordPress version, you’ll see the Classic Editor.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="add-gutenberg">Add Gutenberg Support and Enhance Functionalities to WordPress Custom Post Types</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>If you use the latest WordPress version, you’ll have Gutenberg pre-installed on your WordPress site.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>But if you are using an old WordPress version, you must enable the Gutenberg editor on custom posts. Add the following code to the snippet mentioned in the previous section:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>    'show_in_rest' =&gt; true,
+    'supports' =&gt; array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+
+</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>The above code snippet sets the <strong>‘show_in_rest’</strong> parameter to <strong>‘True.’</strong> After this step, the Gutenberg editor will be enabled when you create or edit a custom post type. And you’ll see the options like <strong>title</strong>, <strong>comments</strong>, and <strong>authors</strong> on the right-side menu.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="complete-code">The Complete Code for function.php File</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Here is the complete code for the function.php file. You don’t need to add this code again in the function.php file. This is only the representation of the complete code:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>    function cw_post_type() {
+       register_post_type( 'portfolio',
+           // WordPress CPT Options Start
+           array(
+               'labels' =&gt; array(
+                   'name' =&gt; __( 'Portfolio' ),
+                   'singular_name' =&gt; __( 'Portfolio' )
+               ),
+               'has_archive' =&gt; true,
+               'public' =&gt; true,
+               'rewrite' =&gt; array('slug' =&gt; 'portfolio'),
+               'show_in_rest' =&gt; true,
+               'supports' =&gt; array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+           )
+       );
+    }
+    add_action( 'init', 'cw_post_type' );
+
+</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p><strong>Note:</strong> <em>Ensure to copy the code correctly and avoid putting any spaces, as it may break the code’s functionality, and you’ll start getting errors.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="display-cpt">How to Display Custom Post Type by Using Code</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>You have learned about creating Custom Post Type, but how does it show on your site’s front end? It’s easy. You just have to add a PHP file with some lines of code in your WordPress theme directory.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>You may think, why do I need to display a custom post type? Normally, you create a new post that starts showing on your site’s front end. However, with custom post types, you must also display your CPT content on your site’s front end so visitors/readers can easily access your content.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Create the template file in your activated theme having the name<strong> template-portfolio.php</strong> and insert the following code to display custom post types:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:code -->
+<pre class="wp-block-code"><code>    &lt;?php /* Template Name: Portfolio */ $args = array( 'post_type' =&gt; 'portfolio',
+       'post_status' =&gt; 'publish',
+       'tax_query'   =&gt; array(
+           array(
+               'taxonomy' =&gt; 'testimonial_service',
+               'field'    =&gt; 'slug',
+           )
+       )
+    );
+    $portfolio = new WP_Query( $args );
+    if( $portfolio-&gt;have_posts() ) :
+           while( $portfolio-&gt;have_posts() ) :
+               $portfolio-&gt;the_post();
+                printf( '%1$s - %2$s', get_the_title(), get_the_content() );
+           endwhile;
+           wp_reset_postdata();
+    else :
+       esc_html_e( 'No Post Found');
+    endif;
+
+</code></pre>
+<!-- /wp:code -->
+
+<!-- wp:paragraph -->
+<p>Once you have added the display code, select the <strong>Default Template</strong> as <strong>‘Portfolio’</strong> to display the custom post type content. Follow the steps below:</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:list -->
+<ul><!-- wp:list-item -->
+<li>Go to the <strong>WordPress Dashboard</strong>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Click <strong>Pages &gt; Add New</strong>.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>Add the <strong>Title</strong> of your page.</li>
+<!-- /wp:list-item -->
+
+<!-- wp:list-item -->
+<li>From the right sidebar, select the <strong>Default Template</strong> as <strong>‘Portfolio’</strong> under the Template section.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
+
+<!-- wp:paragraph -->
+<p>Visit your site, and you’ll see the custom post type displayed with the name<strong> ‘Portfolio.’</strong> You can now access your CPT content from your site’s front end.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading" id="summary">Summary</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Using Gutenberg editor with WordPress custom post types sets the correct parameters in the functions.php file. Once the right snippet is in place, you can easily access the Gutenberg editor on your custom posts.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>If you find any blockages with this process, leave a comment, and I will get back to you ASAP.</p>
+<!-- /wp:paragraph -->
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+</body>
+</html>
